@@ -1,0 +1,8 @@
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\bin\DataAnnotationValidatorTestWeb.dll.config
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\bin\DataAnnotationValidatorTestWeb.dll
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\bin\DataAnnotationValidatorTestWeb.pdb
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\bin\DataAnnotationValidator.dll
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\bin\DataAnnotationValidator.pdb
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\obj\Debug\DataAnnotationValidatorTestWeb.csprojResolveAssemblyReference.cache
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\obj\Debug\DataAnnotationValidatorTestWeb.dll
+C:\Users\Kevin\Source\Repos\DataAnnotationValidator.TestWeb\obj\Debug\DataAnnotationValidatorTestWeb.pdb
