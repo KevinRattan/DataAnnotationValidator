@@ -42,7 +42,7 @@ namespace DataAnnotationValidatorTestWeb.Models
         public string ZipCode { get; set; }
 
         [CreditCard(ErrorMessage = "CreditCard must be a credit card")]
-        [Required(ErrorMessage = "The age must be filled in")]
+        [Required(ErrorMessage = "The credit card must be filled in")]
         public string CreditCard { get; set; }
 
 
