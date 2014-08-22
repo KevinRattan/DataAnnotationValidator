@@ -23,7 +23,7 @@ namespace DataAnnotationValidatorTestWeb.Models
         [Required(ErrorMessage = "The email must be filled in")]
         public string Email { get; set; }
 
-        [Phone(ErrorMessage = "The phone number must be a valid internet url")]
+        [Phone(ErrorMessage = "The phone number must be a valid telephone number")]
         [Required(ErrorMessage = "The tel number must be filled in")]
         public string Telephone { get; set; }
 
