@@ -21,5 +21,21 @@ namespace DataAnnotationValidatorTestWeb
         {
             return TestModel.GetTestModel();
         }
+
+        public void TestFormView_InsertItem()
+        {
+            var item = new DataAnnotationValidatorTestWeb.Models.TestModel();
+            TryUpdateModel(item);
+            if (ModelState.IsValid)
+            {
+               
+
+            }
+        }
+
+
+
+
+
     }
 }

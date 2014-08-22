@@ -13,7 +13,7 @@
         <div>
 
 
-            <asp:FormView ID="TestFormView" runat="server" SelectMethod="TestFormView_GetItem"
+            <asp:FormView ID="TestFormView" runat="server" SelectMethod="TestFormView_GetItem" InsertMethod="TestFormView_InsertItem"
                 ItemType="DataAnnotationValidatorTestWeb.Models.TestModel" DefaultMode="Insert">
                 <InsertItemTemplate>
                     <asp:Label ID="Label1" runat="server" AssociatedControlID="NameTextBox" Text="Name: "></asp:Label><br />

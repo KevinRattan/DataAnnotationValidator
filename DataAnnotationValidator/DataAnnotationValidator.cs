@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -49,6 +50,20 @@ namespace Validators
             string message = string.Empty;
             string display = "style=\"display: none;\" data-val-display=\"None\"";
 
+            Page page = HttpContext.Current.Handler as Page;
+            bool itemValid = true;
+            string errorMessage = string.Empty;
+
+            if (page != null && page.IsPostBack)
+            {
+                itemValid = page.ModelState.IsValidField(this.TypeProperty);
+                if (!itemValid) 
+                {
+                  errorMessage = page.ModelState[this.TypeProperty].Errors[0].ErrorMessage;
+                }
+            }
+           
+
             //loop through each validation attribute, read it and create the appropriate span output
             foreach (ValidationAttribute vat in property
                 .GetCustomAttributes(typeof(ValidationAttribute), true)
@@ -58,21 +73,32 @@ namespace Validators
                 counter++;
                 string idToSet = this.ClientID + counter.ToString();
 
-                //style how it appears on the page
-                if (this.Display != ValidatorDisplay.None)
-                {
-                    message = (this.Text != string.Empty) ? this.Text : vat.ErrorMessage;
-                    display = (this.Display == ValidatorDisplay.Dynamic)
-                              ? "style=\"display: none;\" data-val-display=\"Dynamic\""
-                              : "style=\"visibility: hidden;\"";
-                }
                 //If the developer didn't specify an error message, grab the default message
                 //from the underlying type
                 if (vat.ErrorMessage != null && vat.ErrorMessage.Contains("{0}"))
                 {
                     vat.ErrorMessage = string.Format(vat.ErrorMessage, this.TypeProperty);
                 }
-                
+
+                //style how it appears on the page
+                if (this.Display != ValidatorDisplay.None)
+                {
+                    message = (this.Text != string.Empty) ? this.Text : vat.ErrorMessage;
+                    if (itemValid || errorMessage != vat.ErrorMessage)
+                    {
+                        display = (this.Display == ValidatorDisplay.Dynamic)
+                                  ? "style=\"display: none;\" data-val-display=\"Dynamic\""
+                                  : "style=\"visibility: hidden;\"";
+                    }
+                    else if(errorMessage == vat.ErrorMessage) {  
+                        //only display the error message if this was the one that tripped - or all will show regardless when js off
+                        display = (this.Display == ValidatorDisplay.Dynamic)
+                            ? " data-val-display=\"Dynamic\"" 
+                            : string.Empty;
+                    }
+                }          
+
+
                 switch (vat.GetType().Name)
                 {
                     case "RequiredAttribute":
